@@ -1,0 +1,28 @@
+body {
+	text-align: center;
+	font-family: Georgia;
+}
+
+#header {
+	background-color:#6600CC;
+	padding: 80px;
+	margin-bottom: 50px;
+}
+
+#header h1{
+	color: white;
+}
+
+ul#menu li {
+    display:inline;
+}
+
+#body {
+	text-align: center;
+	font-family: Georgia;
+}
+
+#image {
+	text-align: center;
+	border-radius: 80%;
+}

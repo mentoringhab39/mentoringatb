@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ment</title>
+<link rel = "stylesheet" href = "styles.css">
+</head>
+  <body>
+    <div id = "header">
+    <h1>Connecting Mentees to Mentors</h1>
+    </div>
+    <script src="js/hab2018.js"></script>
+    <center><font face = "Verdana">
+    <form action="" id="newActivity">
+      <header>
+        <h2>Welcome to Mentoring @ Brown!</h2>  
+        <div>Sign Up To Mentor A Student</div>
+         <br>
+      </header>
+      <div>
+        <label class="desc" id="title1" for="Field1">Name: </label>
+        <div>
+          <input id="activityTitle" name="Field1" type="text" value="" tabindex="1">
+          <br>
+          <br>
+        </div>
+      </div>
+      <div>
+        <label class="desc" id="description1" for="Field2">Email: </label>
+        <div>
+          <input id="activityTitle" name="Field1" type="text" value="" tabindex="1">
+          <br> <br> 
+        </div>
+      </div>
+      <div>
+        <label class="desc" id="description3" for="category">Concentration</label>
+        <div>
+          <select id="activityCatagory" name="category" tabIndex="3">
+            <option value="blog">Economics</option>
+            <option value="portfolio">Computer Science</option>
+            <option value="portfolio">Biology</option>
+            <option value="portfolio">Art</option>
+          </select>
+          <br> <br> 
+        </div>
+      </div>
+       <label class="desc" id="description1" for="Field2">Areas of Interest: </label>
+         <div>
+          <textarea id="activityDescription" name="Field2" spellcheck="true" rows="1" col="1" tabindex="2"></textarea>
+        </div>
+      <br>
+      <div>
+        <input id="saveForm" name="saveForm" type="submit" value="Submit">
+      </div>
+    </form>
+    <br />
+    <br />
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+     <script>var config = {
+    apiKey: 'AIzaSyB1SH6EOfox_3oR8LkHHPdiB9zR28rsqik',
+authDomain: 'hab2018-d0734.firebaseapp.com',
+databaseURL: 'https://hab2018.firebaseio.com',
+projectId: 'hab2018-d0734',
+storageBucket: 'hab2018-d0734.appspot.com',
+messagingSenderId: '302257854588'
+       };
+      firebase.initializeApp(config);
+      </script>
+  </body>
+</html>

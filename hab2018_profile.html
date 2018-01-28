@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ment</title>
+<link rel = "stylesheet" href = "styles.css">
+</head>
+    <div id = "header">
+    <h1>Connecting Mentees to Mentors</h1>
+    <header> <br>
+      <h2>Mentor Profiles</h2> 
+    </div>
+    <script src="js/hab2018.js"></script>
+    <center><font face = "Verdana">
+    <form action="" id="newActivity">
+            <div id = "image"><img src="https://images.pottermore.com/bxd3o8b291gf/2y8LoUpBgEEiYSm6kogQcq/84cc9b40a123ed0ac39cf4f9b40b895c/AlbusDumbledore_WB_F3_DumbledoreAddressingStudentsInGreatHall_Still_08061_Land.jpg?w=1200" width="250" height="190"></div>
+        <body><h3><div id = "body">
+          <br>
+          <b> Name: </b> Dumbledore
+          <br>
+          <b> Email: </b> dumbledore@brown.edu
+          <br>
+          <b> Concentration: </b> Wizardry
+          <br>
+          <b> Areas of Interest: </b> First generation of wizards; MAGIX
+        </h3></body>
+      </div>
+    <br />
+    <br />
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+     <script>var config = {
+        apiKey: 'AIzaSyB1SH6EOfox_3oR8LkHHPdiB9zR28rsqik',
+        authDomain: 'hab2018-d0734.firebaseapp.com',
+        databaseURL: 'https://hab2018.firebaseio.com',
+        projectId: 'hab2018-d0734',
+        storageBucket: 'hab2018-d0734.appspot.com',
+        messagingSenderId: '302257854588'
+       };
+      firebase.initializeApp(config);
+       document.addEventListener('DOMContentLoaded', function() {
+        var auth = firebase.auth();
+        var database = firebase.database();
+        var foldersRef = database.ref('folders');
+        var notAuthEl = document.getElementById('not_auth');
+        var loginEl = document.getElementById('not_auth__login');
+        var authEl = document.getElementById('auth');
+        var nameEl = document.getElementById('auth__name');
+        var logoutEl = document.getElementById('auth__logout');
+        var foldersEl = document.getElementById('auth__folders');
+        // HANDLE AUTHORIZATION CHANGES
+        auth.onAuthStateChanged(function(user) {
+          if (user) {
+            startListening();
+            nameEl.innerHTML = user.displayName;
+            notAuthEl.style.display = 'none';
+            authEl.style.display = 'block';
+          } else {
+            stopListening();
+            nameEl.innerHTML = '';
+            authEl.style.display = 'none';
+            notAuthEl.style.display = 'block';
+          }
+        });
+        // END HANDLE AUTHORIZATION CHANGES
+        loginEl.addEventListener('click', function() {
+          var provider = new firebase.auth.FacebookAuthProvider();
+          auth.signInWithRedirect(provider);
+        });
+        logoutEl.addEventListener('click', function() {
+          auth.signOut();
+        });
+        // LISTEN FOR DATABASE CHANGES
+        function startListening() {
+          foldersRef.on('child_added', function(data) {
+            var folder = data.val();
+            var folderEl = document.createElement('li');
+            folderEl.appendChild(document.createTextNode(folder.name));
+            foldersEl.appendChild(folderEl);
+          });
+        }
+        // END LISTEN FOR DATABASE CHANGES
+        function stopListening() {
+          foldersRef.off('child_added');
+        }
+      });
+      </script>
+  </body>
+</html>
